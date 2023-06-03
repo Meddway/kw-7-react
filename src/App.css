@@ -42,6 +42,10 @@
   display: flex;
 }
 
+.ButtonChangeMenu{
+  margin: 3px;
+}
+
 @media (max-width: 768px) {
   .leftColumn {
     flex: none;
