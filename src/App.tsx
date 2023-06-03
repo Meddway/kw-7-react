@@ -1,26 +1,70 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import food from './Icon/food.png';
+import tea from './Icon/tea.png';
 
-function App() {
+
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <fieldset>
+        <legend>Order Details</legend>
+      <div className="leftColumn">
+        <p>Order is empty! <br />
+        Please add some items!</p>
+      </div>
+        </fieldset>
+
+      <fieldset>
+        <legend>Add items</legend>
+        <div className="rightColumn">
+          <div className="item">
+            <img className="Img" src={food} alt="food" />
+            <div className= "NameMenu">
+              Hamburger
+              <p className="Price">Price: </p>
+            </div>
+          </div>
+          <div className="item">
+            <img className="Img" src={tea} alt="tea" />
+            <div className= "NameMenu">
+              Coffee
+              <p className="Price">Price: </p>
+            </div>
+          </div>
+          <div className="item">
+            <img className="Img" src={food} alt="food" />
+            <div className= "NameMenu">
+              Cheeseburger
+              <p className="Price">Price: </p>
+            </div>
+          </div>
+          <div className="item">
+            <img className="Img" src={tea} alt="tea" />
+            <div className= "NameMenu">
+              Tea
+              <p className="Price">Price: </p>
+            </div>
+          </div>
+          <div className="item">
+            <img className="Img" src={food} alt="food" />
+            <div className= "NameMenu">
+              Fries
+              <p className="Price">Price: </p>
+            </div>
+          </div>
+          <div className="item">
+            <img className="Img" src={tea} alt="tea" />
+            <div className= "NameMenu">
+              Cola
+              <p className="Price">Price: </p>
+            </div>
+          </div>
+        </div>
+      </fieldset>
     </div>
+
   );
-}
+};
 
 export default App;
