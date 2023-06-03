@@ -4,6 +4,7 @@
 
 .leftColumn {
   flex: 0 0 30%;
+  width: 300px;
 }
 
 .rightColumn {
@@ -42,13 +43,15 @@
 }
 
 @media (max-width: 768px) {
+  .leftColumn {
+    flex: none;
+    width: 100%;
+  }
+
   .item {
-    flex-basis: calc(100% / 2);
+    flex-basis: 50%;
   }
 }
 
 @media (max-width: 480px) {
-  .item {
-    flex-basis: 100%;
-  }
-}
+ }

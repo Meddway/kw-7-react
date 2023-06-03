@@ -13,19 +13,27 @@ const App = () => {
 
   const [orderItems, setOrderItems] = useState<MenuItem[]>([]);
   const [totalPrice, setTotalPrice] = useState<number>(0);
+  const [itemCount, setItemCount] = useState<{ [key: string]: number }>({});
 
   const addItemToOrder = (item: MenuItem) => {
-    const updatedItems = [...orderItems, item];
     const updatedTotalPrice = totalPrice + item.price;
-    setOrderItems(updatedItems);
     setTotalPrice(updatedTotalPrice);
+    setItemCount((prevItemCount) => ({
+      ...prevItemCount,
+      [item.name]: (prevItemCount[item.name] || 0) + 1,
+    }));
+    setOrderItems((prevOrderItems) => [...prevOrderItems, item]);
   };
 
-  const removeItemFromOrder = (item: MenuItem) => {
-    const updatedItems = orderItems.filter((orderItem) => orderItem !== item);
-    const updatedTotalPrice = totalPrice - item.price;
-    setOrderItems(updatedItems);
+  const removeItemFromOrder = (itemName: string) => {
+    const itemsToRemove = orderItems.filter((item) => item.name === itemName);
+    const updatedOrderItems = orderItems.filter((item) => item.name !== itemName);
+    const updatedTotalPrice = totalPrice - itemsToRemove.reduce((total, item) => total + item.price, 0);
+    const updatedItemCount = { ...itemCount };
+    delete updatedItemCount[itemName];
+    setOrderItems(updatedOrderItems);
     setTotalPrice(updatedTotalPrice);
+    setItemCount(updatedItemCount);
   };
 
   return (
@@ -33,19 +41,19 @@ const App = () => {
       <fieldset>
         <legend>Order Details</legend>
         <div className="leftColumn">
-          {orderItems.length === 0 ? (
-            <p>Order is empty <br /> Please  add some items!</p>
-          ) : (
-            orderItems.map((item, index) => (
-              <div key={index}>
-                <p>{item.name} - Цена: {item.price} KGS</p>
-                <button onClick={() => removeItemFromOrder(item)}>X</button>
-              </div>
-            ))
-          )}
-          {orderItems.length > 0 && <p> <b>Total price: {totalPrice} KGS</b></p>}
+          {Object.entries(itemCount).map(([itemName, count]) => (
+            <div key={itemName}>
+              <p>
+                {itemName} - Цена: {orderItems.find((item) => item.name === itemName)?.price} KGS
+              </p>
+              <p>Количество: <b>{count}</b></p>
+              <button onClick={() => removeItemFromOrder(itemName)}>Удалить</button>
+            </div>
+          ))}
+          {Object.keys(itemCount).length === 0 && <p>Order is empty! Please add some items!</p>}
+          {Object.keys(itemCount).length > 0 && <p> <b>Total price: {totalPrice} KGS</b></p>}
         </div>
-        </fieldset>
+      </fieldset>
 
       <fieldset>
         <legend>Add items</legend>
