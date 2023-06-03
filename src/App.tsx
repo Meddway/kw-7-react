@@ -5,6 +5,12 @@ import tea from './Icon/tea.png';
 
 
 const App = () => {
+
+
+
+
+
+
   return (
     <div className="App">
       <fieldset>
@@ -18,13 +24,16 @@ const App = () => {
       <fieldset>
         <legend>Add items</legend>
         <div className="rightColumn">
-          <div className="item">
-            <img className="Img" src={food} alt="food" />
-            <div className= "NameMenu">
-              Hamburger
-              <p className="Price">Price: </p>
+          <button className="ButtonChangeMenu">
+            <div className="item">
+              <img className="Img" src={food} alt="food" />
+              <div className= "NameMenu">
+                Hamburger
+                <p className="Price">Price: </p>
+              </div>
             </div>
-          </div>
+          </button>
+          <button className="ButtonChangeMenu">
           <div className="item">
             <img className="Img" src={tea} alt="tea" />
             <div className= "NameMenu">
@@ -32,6 +41,8 @@ const App = () => {
               <p className="Price">Price: </p>
             </div>
           </div>
+          </button>
+          <button className="ButtonChangeMenu">
           <div className="item">
             <img className="Img" src={food} alt="food" />
             <div className= "NameMenu">
@@ -39,6 +50,8 @@ const App = () => {
               <p className="Price">Price: </p>
             </div>
           </div>
+          </button>
+          <button className="ButtonChangeMenu">
           <div className="item">
             <img className="Img" src={tea} alt="tea" />
             <div className= "NameMenu">
@@ -46,6 +59,8 @@ const App = () => {
               <p className="Price">Price: </p>
             </div>
           </div>
+          </button>
+          <button className="ButtonChangeMenu">
           <div className="item">
             <img className="Img" src={food} alt="food" />
             <div className= "NameMenu">
@@ -53,6 +68,8 @@ const App = () => {
               <p className="Price">Price: </p>
             </div>
           </div>
+          </button>
+          <button className="ButtonChangeMenu">
           <div className="item">
             <img className="Img" src={tea} alt="tea" />
             <div className= "NameMenu">
@@ -60,10 +77,10 @@ const App = () => {
               <p className="Price">Price: </p>
             </div>
           </div>
+          </button>
         </div>
       </fieldset>
     </div>
-
   );
 };
 
